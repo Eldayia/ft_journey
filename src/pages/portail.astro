@@ -1,0 +1,88 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+const services = [
+  {
+    name: 'Nextcloud',
+    description: 'Mes fichiers et mon cloud',
+    url: 'https://cloud.camjouan.tech',
+    icon: '☁️',
+  },
+  {
+    name: 'Forgejo',
+    description: 'Mes dépôts Git',
+    url: 'https://git.camjouan.tech',
+    icon: '💻',
+  },
+  {
+    name: 'Hastebin',
+    description: 'Partage rapide de code',
+    url: 'https://paste.camjouan.tech',
+    icon: '📋',
+  },
+];
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Mon portail',
+    description: 'Mes outils et services en ligne',
+  }}
+>
+  <h1>Mes services</h1>
+  <p>Retrouve ici mes applications et outils auto-hébergés.</p>
+
+  <div class="services">
+    {services.map((service) => (
+      <a
+        href={service.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="service"
+      >
+        <span class="icon">{service.icon}</span>
+        <h2>{service.name}</h2>
+        <p>{service.description}</p>
+      </a>
+    ))}
+  </div>
+</StarlightPage>
+
+<style>
+  .services {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, 220px), 1fr)
+    );
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .service {
+    padding: 1.5rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 12px;
+    background: var(--sl-color-gray-6);
+    text-decoration: none;
+    color: var(--sl-color-text);
+  }
+
+  .service:hover {
+    border-color: var(--sl-color-accent);
+  }
+
+  .icon {
+    font-size: 2rem;
+  }
+
+  .service h2 {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .service p {
+    color: var(--sl-color-gray-2);
+    font-size: 0.9rem;
+  }
+</style>
