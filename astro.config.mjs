@@ -10,6 +10,9 @@ export default defineConfig({
     starlight({
       title: 'ft_journey',
       description: 'Mon parcours à 42, mes projets et ressources',
+      components: {
+        SocialIcons: './src/components/HeaderLinks.astro',
+      },
 
       // Français comme langue principale
       locales: {
@@ -45,8 +48,16 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'ressources' } }],
         },
         {
-          label: 'Mes services',
-          link: '/portal/',
+          label: 'Portal',
+          items: [
+            { label: 'Mes services', link: '/portail/' },
+            { label: 'Cloud', link: 'https://cloud.camjouan.tech' },
+            { label: 'Hastebin', link: 'https://paste.camjouan.tech' },
+            { label: 'Excalidraw', link: 'https://draw.camjouan.tech' },
+            { label: 'ConvertX', link: 'https://convert.camjouan.tech' },
+            { label: 'Upload', link: 'https://transfer.camjouan.tech' },
+            { label: 'StirlingPDF', link: 'https://pdf.camjouan.tech' },
+          ],
         },
       ],
     }),
